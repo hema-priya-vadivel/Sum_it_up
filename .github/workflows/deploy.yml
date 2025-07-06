@@ -3,16 +3,18 @@ name: Deploy to GitHub Pages - Sum it up
 on:
   push:
     branches:
-      - main
+      - main  # or your branch name
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup Pages
@@ -21,7 +23,7 @@ jobs:
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'Sum_it_up'
+          path: 'Sum_it_up'  # folder with index.html
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
