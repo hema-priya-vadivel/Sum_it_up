@@ -1,0 +1,27 @@
+name: Deploy to GitHub Pages - Sum it up
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'Sum_it_up'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
